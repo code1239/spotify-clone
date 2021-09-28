@@ -7,10 +7,15 @@
   --text-subdued: #aaa;
 }
 body {
+  position: relative;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
+}
+body.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
 }
 nav {
   display: flex;
@@ -117,6 +122,9 @@ nav .options p:last-child {
 nav .options p:hover {
   color: var(--green);
 }
+.hamburger {
+  display: none;
+}
 
 /* Hero Section */
 
@@ -132,6 +140,8 @@ nav .options p:hover {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
 }
 .hero .container {
   color: var(--green);
@@ -231,4 +241,90 @@ footer ul li a {
   text-decoration: none;
   color: white;
   font-size: 0.7rem;
+}
+@media only screen and (max-width: 600px) {
+  nav .links ul {
+    display: none;
+  }
+  nav ul li:last-child a::after {
+    display: none;
+  }
+  .logo {
+    margin-left: 0;
+  }
+  .hamburger {
+    cursor: pointer;
+    display: block;
+    font-size: 1.5rem;
+    z-index: 999;
+  }
+  .mobile-menu.disabled {
+    width: 0;
+    overflow: hidden;
+  }
+  .mobile-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    height: 100%;
+    background: black;
+    z-index: 30;
+    transition: 0.2s ease-in all;
+  }
+  .mobile-menu ul {
+    margin-top: 3rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .mobile-menu ul li a {
+    color: white;
+  }
+  /* Hero */
+  .hero .container {
+    height: fit-content;
+    width: 100%;
+    padding: 0 3rem;
+    margin-bottom: -0.5rem;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50px;
+  }
+  .hero .container h1 {
+    font-size: 2rem;
+    letter-spacing: -1px;
+  }
+  footer {
+    height: fit-content;
+    justify-content: initial;
+  }
+  footer .row {
+    flex-direction: column;
+  }
+  footer .social {
+    font-size: 1rem;
+    margin-bottom: 3rem;
+  }
+  footer .social i {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  footer ul {
+    margin: 0 0.5rem;
+    padding: 0;
+    font-size: 0.7rem;
+    flex-direction: column;
+  }
+  footer ul li:first-child {
+    margin-top: 3rem;
+  }
+
+  footer ul li a {
+    margin: 0;
+    padding: 0;
+    font-size: 0.7rem;
+  }
 }
